@@ -1,19 +1,18 @@
 name "sensu-admin"
-version "v0.0.6"
+version "master"
 
 dependency "ruby"
 dependency "bundler"
-dependencies [ "activesupport", "actionpack", "sqlite3" ]
+dependencies [ "nokogiri","activesupport", "actionpack", "sqlite3" ]
 
 source git: "http://github.com/cgallimore/sensu-admin"
 
 relative_path "sensu-admin"
 
 build do
-#  bundle "install --path=#{install_dir}/embedded/service/gem --without mysql"
   command "rake gem"
-  gem [ "install sensu-admin-#{version}.gem",
+  gem [ "install #{source_dir}/#{name}/pkg/sensu-admin-0.0.6.gem",
         "--bindir #{install_dir}/bin",
         "--no-rdoc --no-ri",
-        "--trace" ].join(" ")
+      ].join(" ")
 end
