@@ -3,7 +3,7 @@ version "master"
 
 dependency "ruby"
 dependency "bundler"
-dependencies [ "activesupport", "actionpack", "mysql2", "nokogiri", "sqlite3" ]
+dependencies [ "activesupport", "actionpack", "nokogiri", "sqlite3" ]
 
 source git: "http://github.com/cgallimore/sensu-admin"
 
