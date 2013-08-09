@@ -21,6 +21,7 @@ function run_installer
     echo "Running rake tasks ..."
     /opt/sensu-admin/embedded/bin/rake db:migrate &&
     /opt/sensu-admin/embedded/bin/rake db:seed &&
+    # hack to get around 1.5.2 being installed
     /opt/sensu-admin/embedded/bin/gem uninstall -q rack -v 1.5.2
 }
 
