@@ -7,7 +7,7 @@ dependency "nokogiri"
 dependency "sqlite3-libs"
 dependency "pre_install"
 
-source git: "http://github.com/cgallimore/sensu-admin"
+source git: "http://github.com/sensu/sensu-admin"
 
 relative_path "sensu-admin"
 
