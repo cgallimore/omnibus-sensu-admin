@@ -4,6 +4,9 @@
 # after package is uninstalled.
 #
 
+echo "Removing /opt/sensu-admin"
+rm -rf /opt/sensu-admin
+
 echo "sensu-admin has been uninstalled!"
 
 exit 0

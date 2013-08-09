@@ -3,6 +3,7 @@
 # Perform necessary sensu-admin setup steps
 # after package is installed.
 #
+set -e
 
 PROGNAME=$(basename $0)
 
@@ -11,6 +12,19 @@ function error_exit
   echo "${PROGNAME}: ${1:-"Unknown Error"}" 1>&2
   exit 1
 }
+
+function run_installer
+{
+  cd /opt/sensu-admin && 
+    echo "Running 'bundle install' ..."
+    /opt/sensu-admin/embedded/bin/bundle install --without mysql &&
+    echo "Running rake tasks ..."
+    /opt/sensu-admin/embedded/bin/rake db:migrate &&
+    /opt/sensu-admin/embedded/bin/rake db:seed &&
+    /opt/sensu-admin/embedded/bin/gem uninstall -q rack -v 1.5.2
+}
+
+run_installer
 
 echo "Thank you for installing sensu-admin!"
 

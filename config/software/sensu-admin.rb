@@ -3,16 +3,14 @@ version "master"
 
 dependency "ruby"
 dependency "bundler"
-dependencies [ "activesupport", "actionpack", "nokogiri", "sqlite3" ]
+dependency "nokogiri"
+dependency "sqlite3-libs"
+dependency "pre_install"
 
 source git: "http://github.com/cgallimore/sensu-admin"
 
 relative_path "sensu-admin"
 
 build do
-  command "rake gem"
-  gem [ "install #{source_dir}/#{name}/pkg/sensu-admin-0.0.6.gem",
-        "--bindir #{install_dir}/bin",
-        "--no-rdoc --no-ri",
-      ].join(" ")
+  command "cp -R #{source_dir}/sensu-admin/* #{install_dir}"
 end
