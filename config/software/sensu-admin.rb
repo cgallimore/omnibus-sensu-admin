@@ -6,6 +6,8 @@ dependency "bundler"
 dependency "nokogiri"
 dependency "sqlite3-libs"
 dependency "pre_install"
+dependency "nginx"
+dependency "unicorn"
 
 source git: "http://github.com/sensu/sensu-admin"
 
