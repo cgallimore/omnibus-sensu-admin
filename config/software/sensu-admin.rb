@@ -13,4 +13,5 @@ relative_path "sensu-admin"
 
 build do
   command "cp -R #{source_dir}/sensu-admin/* #{install_dir}"
+  FileUtils.cp "#{Omnibus::Config.project_root}/scripts/sensu-admin.god", "#{install_dir}/script"
 end
