@@ -1,5 +1,5 @@
 God.watch do |w|
   w.name = "sensu-admin"
-  w.start = "rackup ../config.ru -D"
+  w.start = "/opt/sensu-admin/embedded/bin/rackup /opt/sensu-admin/config.ru"
   w.keepalive
 end
