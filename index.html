@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="stylesheets/pygment_trac.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="stylesheets/print.css" media="print" />
+
+    <title>Omnibus-sensu-admin by cgallimore</title>
+  </head>
+
+  <body>
+
+    <header>
+      <div class="container">
+        <h1>Omnibus-sensu-admin</h1>
+        <h2>Omnibus for Sensu Admin</h2>
+
+        <section id="downloads">
+          <a href="https://github.com/cgallimore/omnibus-sensu-admin/zipball/master" class="btn">Download as .zip</a>
+          <a href="https://github.com/cgallimore/omnibus-sensu-admin/tarball/master" class="btn">Download as .tar.gz</a>
+          <a href="https://github.com/cgallimore/omnibus-sensu-admin" class="btn btn-github"><span class="icon"></span>View on GitHub</a>
+        </section>
+      </div>
+    </header>
+
+    <div class="container">
+      <section id="main_content">
+        <h1>
+<a name="sensu-admin-omnibus-project" class="anchor" href="#sensu-admin-omnibus-project"><span class="octicon octicon-link"></span></a>sensu-admin Omnibus project</h1>
+
+<p>This project creates full-stack platform-specific packages for
+<code>sensu-admin</code>!</p>
+
+<h2>
+<a name="installation" class="anchor" href="#installation"><span class="octicon octicon-link"></span></a>Installation</h2>
+
+<p>We'll assume you have Ruby 1.9+ and Bundler installed. First ensure all
+required gems are installed and ready to use:</p>
+
+<pre lang="shell"><code>$ bundle install --binstubs
+</code></pre>
+
+<h2>
+<a name="usage" class="anchor" href="#usage"><span class="octicon octicon-link"></span></a>Usage</h2>
+
+<h3>
+<a name="build" class="anchor" href="#build"><span class="octicon octicon-link"></span></a>Build</h3>
+
+<p>You create a platform-specific package using the <code>build project</code> command:</p>
+
+<pre lang="shell"><code>$ bin/omnibus build project sensu-admin
+</code></pre>
+
+<p>The platform/architecture type of the package created will match the platform
+where the <code>build project</code> command is invoked. So running this command on say a
+MacBook Pro will generate a Mac OS X specific package. After the build
+completes packages will be available in <code>pkg/</code>.</p>
+
+<h3>
+<a name="clean" class="anchor" href="#clean"><span class="octicon octicon-link"></span></a>Clean</h3>
+
+<p>You can clean up all temporary files generated during the build process with
+the <code>clean</code> command:</p>
+
+<pre lang="shell"><code>$ bin/omnibus clean
+</code></pre>
+
+<p>Adding the <code>--purge</code> purge option removes <strong>ALL</strong> files generated during the
+build including the project install directory (<code>/opt/sensu-admin</code>) and
+the package cache directory (<code>/var/cache/omnibus/pkg</code>):</p>
+
+<pre lang="shell"><code>$ bin/omnibus clean --purge
+</code></pre>
+
+<h3>
+<a name="help" class="anchor" href="#help"><span class="octicon octicon-link"></span></a>Help</h3>
+
+<p>Full help for the Omnibus command line interface can be accessed with the
+<code>help</code> command:</p>
+
+<pre lang="shell"><code>$ bin/omnibus help
+</code></pre>
+
+<h2>
+<a name="vagrant-based-virtualized-build-lab" class="anchor" href="#vagrant-based-virtualized-build-lab"><span class="octicon octicon-link"></span></a>Vagrant-based Virtualized Build Lab</h2>
+
+<p>Every Omnibus project ships will a project-specific
+<a href="http://berkshelf.com/">Berksfile</a> and <a href="http://www.vagrantup.com/">Vagrantfile</a>
+that will allow you to build your projects on the following platforms:</p>
+
+<ul>
+<li>CentOS 5 64-bit</li>
+<li>CentOS 6 64-bit</li>
+<li>Ubuntu 10.04 64-bit</li>
+<li>Ubuntu 11.04 64-bit</li>
+<li>Ubuntu 12.04 64-bit</li>
+</ul><p>Please note this build-lab is only meant to get you up and running quickly;
+there's nothing inherent in Omnibus that restricts you to just building CentOS
+or Ubuntu packages. See the Vagrantfile to add new platforms to your build lab.</p>
+
+<p>The only requirements for standing up this virtualized build lab are:</p>
+
+<ul>
+<li>VirtualBox - native packages exist for most platforms and can be downloaded
+from the <a href="https://www.virtualbox.org/wiki/Downloads">VirtualBox downloads page</a>.</li>
+<li>Vagrant 1.2.1+ - native packages exist for most platforms and can be downloaded
+from the <a href="http://downloads.vagrantup.com/">Vagrant downloads page</a>.</li>
+</ul><p>The <a href="https://github.com/RiotGames/vagrant-berkshelf">vagrant-berkshelf</a> and
+<a href="https://github.com/schisamo/vagrant-omnibus">vagrant-omnibus</a> Vagrant plugins
+are also required and can be installed easily with the following commands:</p>
+
+<pre lang="shell"><code>$ vagrant plugin install vagrant-berkshelf
+$ vagrant plugin install vagrant-omnibus
+</code></pre>
+
+<p>Once the pre-requisites are installed you can build your package across all
+platforms with the following command:</p>
+
+<pre lang="shell"><code>$ vagrant up
+</code></pre>
+
+<p>If you would like to build a package for a single platform the command looks like this:</p>
+
+<pre lang="shell"><code>$ vagrant up PLATFORM
+</code></pre>
+
+<p>The complete list of valid platform names can be viewed with the
+<code>vagrant status</code> command.</p>
+      </section>
+    </div>
+
+    
+  </body>
+</html>
