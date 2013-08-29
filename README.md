@@ -9,6 +9,8 @@ We'll assume you have Ruby 1.9+ and Bundler installed. First ensure all
 required gems are installed and ready to use:
 
 ```shell
+$ gem install omnibus-sonian
+
 $ bundle install --binstubs
 ```
 
